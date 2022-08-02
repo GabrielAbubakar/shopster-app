@@ -12,18 +12,15 @@ export const cartSlice = createSlice({
     name: 'cart',
     initialState,
     reducers: {
-        increment: (state) => {
-            state.value += 1
-        },
-        increNum: (state, { payload }) => {
-            state.value += payload
+        storeCategory: (state, action) => {
+            state.currentCategory = action.payload
         }
     }
 })
 
 
 
-export const { increment, increNum } = cartSlice.actions
+export const { storeCategory } = cartSlice.actions
 
 
 

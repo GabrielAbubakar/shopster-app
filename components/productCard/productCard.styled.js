@@ -7,7 +7,7 @@ export const Container = styled(motion.div)`
     position: relative;
 
     &:hover {
-        box-shadow: 0 4px 35px #a8acb030;
+        box-shadow: 0 4px 35px #a8acb060;
         transition: all .2s ease;
     }
 

@@ -1,8 +1,11 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 
+
 const initialState = {
-    value: 0,
+    cart: [],
+    currentCategory: "",
+    currentCurrency: "",
 }
 
 export const cartSlice = createSlice({
@@ -11,13 +14,16 @@ export const cartSlice = createSlice({
     reducers: {
         increment: (state) => {
             state.value += 1
+        },
+        increNum: (state, { payload }) => {
+            state.value += payload
         }
     }
 })
 
 
 
-export const { increment } = cartSlice.actions
+export const { increment, increNum } = cartSlice.actions
 
 
 

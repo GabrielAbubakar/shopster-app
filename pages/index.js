@@ -1,33 +1,45 @@
-import React from 'react'
-import Navbar from '../components/navbar'
+import { useState } from 'react'
+// import { useSelector, useDispatch } from 'react-redux'
+// import client from '../graphql/apolloclient'
+// import { getAllProducts, getProductsByCategory } from '../graphql/queries'
 import { GlobalStyles } from '../components/styled/Global.styled'
-import client from '../graphql/apolloclient'
-import { getAllProducts, getProductsByCategory } from '../graphql/queries'
+import { Container, Content, ProductGrid } from '../components/styled/Homepage.styled'
+import Navbar from '../components/navbar'
+import ProductCard from '../components/productCard'
+import { } from '../redux/reducers/cart/cartSlice'
 
 const Home = () => {
 
-    async function queryApi(category) {
-        const response = await client.query({
-            query: getProductsByCategory,
-            variables: {
-                title: category
-            }
-        })
-
-        console.log(response);
-    }
+    const [products, setProducts] = useState([])
 
 
     return (
-        <div>
+        <Container>
 
             <GlobalStyles />
             <Navbar />
 
-            <button onClick={() => queryApi('clothes')}>
-                Query
-            </button>
-        </div>
+            <Content>
+
+                <h1>{ } Products</h1>
+
+                <ProductGrid>
+                    {/* {
+                        products && products.map(item => (
+                            <ProductCard
+                                key={item.id}
+                                name={item.name}
+                                price={item.prices[0].amount}
+                                img={item.gallery[0]}
+                                id={item.id} />
+                                
+                            <ProductCard key={item.id} {...item} />
+                        ))
+                    } */}
+                </ProductGrid>
+            </Content>
+
+        </Container>
     )
 }
 

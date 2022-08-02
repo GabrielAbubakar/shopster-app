@@ -2,14 +2,19 @@ import Image from 'next/image'
 import Cartsvg from '../../public/assets/addCart.svg'
 import { Container } from './productCard.styled'
 
-const ProductCard = ({ img, name, addCart }) => {
+const ProductCard = ({ gallery, name, addCart, prices }) => {
     return (
         <Container>
             <figure>
-                <Image src={img} alt={name} width={356} height={338} />
+                <Image
+                    // src={gallery}
+                    src={''}
+                    alt={name}
+                    width={356}
+                    height={338} />
             </figure>
             <h3>{name}</h3>
-            <p>${price}</p>
+            <p>${prices[0].amount}</p>
             <button>
                 <Image src={Cartsvg} alt="cart" />
             </button>

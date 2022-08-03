@@ -7,8 +7,7 @@ const ProductCard = ({ gallery, name, addCart, prices }) => {
         <Container>
             <figure>
                 <Image
-                    // src={gallery}
-                    src={''}
+                    src={gallery[0]}
                     alt={name}
                     width={356}
                     height={338} />

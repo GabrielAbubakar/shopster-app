@@ -9,6 +9,7 @@ export const Container = styled(motion.div)`
     &:hover {
         box-shadow: 0 4px 35px #a8acb060;
         transition: all .2s ease;
+        cursor: pointer;
     }
 
     &:hover button {
@@ -26,9 +27,7 @@ export const Container = styled(motion.div)`
     img {
         width: 100%;
         height: auto;
-        /* object-fit: contain; */
         object-position: bottom;
-        /* height: 100%; */
     }
 
     h3 {

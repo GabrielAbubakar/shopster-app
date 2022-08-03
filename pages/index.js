@@ -32,20 +32,34 @@ const Home = ({ productsData, categoryData }) => {
     const dispatch = useDispatch();
     const { currentCategory } = useSelector((state => state.persistedReducer.cart))
 
+
     const [products, setProducts] = useState(productsData)
 
 
 
+    const fetchCategory = async (cat) => {
+        const res = await client.query({
+            query: getProductsByCategory,
+            variables: {
+                title: cat
+            }
+        })
+        setProducts(res.data.category.products)
+        dispatch(storeCategory(res.data.category.name))
+    }
+
 
     useEffect(() => {
         dispatch(storeCategory(categoryData))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [categoryData])
+
 
     return (
         <Container>
 
             <GlobalStyles />
-            <Navbar />
+            <Navbar fetchCategoryFunc={fetchCategory} />
 
             <Content>
 
@@ -54,13 +68,6 @@ const Home = ({ productsData, categoryData }) => {
                 <ProductGrid>
                     {
                         products && products.map(item => (
-                            // <ProductCard
-                            //     key={item.id}
-                            //     name={item.name}
-                            //     price={item.prices[0].amount}
-                            //     img={item.gallery[0]}
-                            //     id={item.id} />
-
                             <ProductCard key={item.id} {...item} />
                         ))
                     }

@@ -16,7 +16,7 @@ const ProductCard = ({ id, gallery, name, addCart, prices }) => {
                 </figure>
                 <h3>{name}</h3>
                 <p>${prices[0].amount}</p>
-                <button>
+                <button title='Add to cart'>
                     <Image src={Cartsvg} alt="cart" />
                 </button>
             </Container>

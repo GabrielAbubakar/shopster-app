@@ -45,5 +45,10 @@ export const Container = styled(motion.div)`
         right: 5%;
         cursor: pointer;
         display: none;
+        transition: all .4s ease;
+
+        &:hover {
+            transform: scale(1.1);
+        }
     }
 `

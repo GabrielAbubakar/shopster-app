@@ -27,7 +27,8 @@ export const Container = styled(motion.div)`
     img {
         width: 100%;
         height: auto;
-        object-position: bottom;
+        object-position: top;
+        object-fit: contain;
     }
 
     h3 {

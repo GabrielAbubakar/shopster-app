@@ -26,7 +26,7 @@ export async function getStaticProps() {
 
 
 
-const Home = ({ productsData, categoryData }) => {
+const Home = ({ productsData }) => {
 
     const dispatch = useDispatch();
     const { currentCategory } = useSelector((state => state.persistedReducer.cart))
@@ -47,18 +47,24 @@ const Home = ({ productsData, categoryData }) => {
         dispatch(storeCategory(res.data.category.name))
     }
 
+    // useEffect(() => {
+    //     dispatch(storeCategory(categoryData))
+    // }, [])
 
     useEffect(() => {
-        dispatch(storeCategory(categoryData))
+        fetchCategory(currentCategory);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [categoryData])
+    }, [currentCategory])
+
+
 
 
     return (
         <Container>
 
 
-            <Navbar fetchCategoryFunc={fetchCategory} />
+
+            <Navbar />
 
             <Content>
 

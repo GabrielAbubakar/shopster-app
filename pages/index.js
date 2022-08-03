@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import client from '../graphql/apolloclient'
 import { getAllProducts, getProductsByCategory } from '../graphql/queries'
-import { GlobalStyles } from '../components/styled/Global.styled'
 import { Container, Content, ProductGrid } from '../components/styled/Homepage.styled'
 import Navbar from '../components/navbar'
 import ProductCard from '../components/productCard'
@@ -58,7 +57,7 @@ const Home = ({ productsData, categoryData }) => {
     return (
         <Container>
 
-            <GlobalStyles />
+
             <Navbar fetchCategoryFunc={fetchCategory} />
 
             <Content>

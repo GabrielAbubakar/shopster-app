@@ -13,6 +13,7 @@ export const getAllProducts = gql`
                 gallery
                 description
                 category
+                brand
                 attributes {
                   id
                   name
@@ -43,6 +44,7 @@ export const getProduct = gql`
             gallery
             description
             category
+            brand
             attributes {
               id
               name
@@ -77,6 +79,7 @@ export const getProductsByCategory = gql`
               gallery
               description
               category
+              brand
               attributes {
                 id
                 name

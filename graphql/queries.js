@@ -101,3 +101,12 @@ export const getProductsByCategory = gql`
           }
     }
 `
+
+export const getCurrencies = gql`
+  query {
+    currencies {
+      label
+      symbol
+    }
+  }
+`

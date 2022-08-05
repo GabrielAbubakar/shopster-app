@@ -5,7 +5,7 @@ export const Container = styled(motion.nav)`
     display: flex;
     justify-content: space-between;
     padding: 1.7rem 0;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     
 
     &>* {

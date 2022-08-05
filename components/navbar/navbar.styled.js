@@ -25,7 +25,7 @@ export const Container = styled(motion.nav)`
             cursor: pointer;
 
             &:hover {
-                color: #05cb05;
+                color: #58e783;
             }
         }
     }

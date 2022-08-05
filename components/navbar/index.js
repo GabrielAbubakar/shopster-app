@@ -4,14 +4,46 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Container } from './navbar.styled'
 import Logo from '../../public/assets/logo.svg'
 import Cart from '../../public/assets/cart.svg'
-import { storeCategory } from '../../redux/reducers/cart/cartSlice'
+import { changeCurrency, storeCategory } from '../../redux/reducers/cart/cartSlice'
+import { useEffect, useState } from 'react'
+import { getCurrencies } from '../../graphql/queries'
+import client from '../../graphql/apolloclient'
 
 
 const Navbar = () => {
 
-    const { currentCategory } = useSelector((state => state.persistedReducer.cart))
+    const { currentCategory, cart, currentCurrency } = useSelector((state => state.persistedReducer.cart))
+
+    const [totalQuantity, setTotalQuantity] = useState()
+    const [currencies, setCurrencies] = useState()
 
     const dispatch = useDispatch()
+
+
+    async function getCurr() {
+        const res = await client.query({
+            query: getCurrencies,
+        })
+
+        setCurrencies(res.data.currencies)
+        // console.log(res.data.currencies)
+    }
+
+    useEffect(() => {
+        getCurr()
+    }, [])
+
+
+
+
+
+    useEffect(() => {
+        const sum = 0;
+        cart.map(item => {
+            sum += item.quantity
+        })
+        setTotalQuantity(sum)
+    }, [cart])
 
 
     return (
@@ -45,8 +77,24 @@ const Navbar = () => {
             </div>
 
             <div className='shopping'>
-                <div>
+                {/* <select name="" id="" onChange={(e) => dispatch(changeCurrency(currencies[e.target.selectedIndex].label))}> */}
+                <select name="" id="" onChange={(e) => dispatch(changeCurrency(e.target.value))}>
+                    {/* <select name="" id="" onChange={(e) => console.log(e.target.options)}> */}
+                    {
+                        currencies && currencies.map(item => (
+                            <option
+                                key={item.label}
+                                value={item.label}>
+                                {item.label}
+                            </option>
+                        ))
+                    }
+                </select>
 
+                <div>
+                    {
+                        totalQuantity
+                    }
                 </div>
                 <div>
                     <Image src={Cart} alt="cart" title='cart' />

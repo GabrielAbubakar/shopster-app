@@ -55,7 +55,34 @@ export const ImageShowcase = styled(motion.div)`
 export const ItemDetails = styled(motion.div)`
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
+    background-color: #efefef;
+    padding: 2rem;
+
+    h2 {
+
+    }
+
+    h3 {
+        font-weight: 800;
+        color: #555;
+        font-size: 1.3rem;
+    }
+
+    h4 {
+        margin-bottom: .7rem;
+        text-transform: uppercase;
+    }
+
+    button {
+        width: 100%;
+        background-color: #58e783;
+        border: 0;
+        padding: .8rem 1rem;
+        color: #fff;
+        font-size: 1.2rem;
+        text-transform: uppercase;
+    }
 `
 
 export const CapacityAttr = styled(motion.div)`
@@ -64,4 +91,11 @@ export const CapacityAttr = styled(motion.div)`
 
 export const ColorAttr = styled(motion.div)`
 
+`
+
+export const Price = styled(motion.div)`
+
+    p {
+        margin-bottom: 1rem;
+    }
 `

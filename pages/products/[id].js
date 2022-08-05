@@ -1,10 +1,23 @@
 import Image from 'next/image'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Navbar from '../../components/navbar'
-import { Container, ImageBox, ImageShowcase, ImagesRow, ItemDetails, ProductGrid } from '../../components/styled/ProductDetail.styled'
+import {
+    Container,
+    ImageBox,
+    ImageShowcase,
+    ImagesRow,
+    ItemDetails,
+    Price,
+    ProductGrid
+} from '../../components/styled/ProductDetail.styled'
 import client from '../../graphql/apolloclient'
 import { getAllProducts, getProduct } from '../../graphql/queries'
+import { useDispatch, useSelector } from 'react-redux'
+import { addToCart } from '../../redux/reducers/cart/cartSlice'
 
+
+
+//Generate the paths for all products
 export async function getStaticPaths() {
     const res = await client.query({
         query: getAllProducts,
@@ -22,6 +35,7 @@ export async function getStaticPaths() {
     }
 }
 
+//Pass the appropriate product to the appropriate page
 export async function getStaticProps({ params }) {
     return {
         props: {
@@ -35,12 +49,12 @@ export async function getStaticProps({ params }) {
     }
 }
 
-
+//Init Page
 const ProductDetails = ({ product }) => {
 
+    const dispatch = useDispatch()
+    const { currentCurrency } = useSelector(state => state.persistedReducer.cart)
     const { name, gallery, brand, description, prices } = product.data.product
-    // console.log(gallery);
-
     const [activeImage, setActiveImage] = useState(0)
 
 
@@ -87,26 +101,30 @@ const ProductDetails = ({ product }) => {
 
                             <ItemDetails>
                                 <div>
-                                    <h2>{name}</h2>
                                     <h3>{brand}</h3>
+                                    <h2>{name}</h2>
                                 </div>
 
                                 <div>
-
+                                    q
                                 </div>
 
                                 <div>
-
+                                    q
                                 </div>
 
-                                <div>
+                                <Price>
                                     <h4>Price</h4>
-                                    <p>
-                                        {`${prices[0].currency.symbol}${prices[0].amount}`}
-                                    </p>
+                                    {
+                                        prices.map(item => {
+                                            if (item.currency.label === currentCurrency) {
+                                                return <p key={item.currency.label}>{item.currency.symbol}{item.amount}</p>
+                                            }
+                                        })
+                                    }
 
-                                    <button>Add to Cart</button>
-                                </div>
+                                    <button onClick={() => dispatch(addToCart(product.data.product))}>Add to Cart</button>
+                                </Price>
 
                                 <p>
                                     {description.replace(/(<([^>]+)>)/gi, "")}

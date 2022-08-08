@@ -58,6 +58,7 @@ export const ItemDetails = styled(motion.div)`
     gap: 1rem;
     background-color: #efefef;
     padding: 2rem;
+    align-self: flex-start;
 
     h2 {
 
@@ -91,6 +92,7 @@ export const Price = styled(motion.div)`
     }
 
     button {
+        cursor: pointer;
         width: 100%;
         background-color: #58e783;
         border: 0;

@@ -5,6 +5,10 @@ import Cartsvg from '../../public/assets/addCart.svg'
 import { Container } from './productCard.styled'
 import { addToCart } from '../../redux/reducers/cart/cartSlice'
 
+
+
+
+
 const ProductCard = (item) => {
 
     const { id, gallery, name, prices } = item
@@ -13,8 +17,25 @@ const ProductCard = (item) => {
 
     const dispatch = useDispatch();
 
+    const itemVariant = {
+        hidden: { opacity: 0, y: 50 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 3,
+                type: "spring",
+            }
+        },
+    }
+
     return (
-        <Container>
+        <Container
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={itemVariant}
+        >
             <Link href={'/products/' + id}>
                 <div>
                     <figure>

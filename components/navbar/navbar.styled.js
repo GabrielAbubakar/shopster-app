@@ -36,5 +36,29 @@ export const Container = styled(motion.nav)`
 
     .shopping {
         justify-content: flex-end;
+        gap: 1rem;
+        align-items: center;
+    }
+`
+
+
+export const CartDiv = styled(motion.div)`
+    cursor: pointer;
+    position: relative;
+
+    &> p {
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        top: -15px;
+        right: -15px;
+        border-radius: 50%;
+        background-color: #111;
+        color: #fff;
+        z-index: 1;
+        padding: .5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 `

@@ -1,0 +1,127 @@
+import { useEffect, useState } from "react"
+import Image from "next/image"
+import { useSelector, useDispatch } from 'react-redux'
+import { storeCategory, incrementQuantity, decrementQuantity } from '../redux/reducers/cart/cartSlice'
+import Navbar from "../components/navbar"
+import { Container, CartGrid, Item, ItemLeft, ItemRight, ImageBox, Buttons, Total } from "../components/styled/CartPage.styled"
+import { AnimatePresence } from 'framer-motion'
+
+const CartPage = () => {
+
+    const dispatch = useDispatch()
+    const { cart, currentCurrency } = useSelector((state => state.persistedReducer.cart))
+
+    const [totalQuantity, setTotalQuantity] = useState()
+    const [itemGroup, setItemGroup] = useState()
+
+    const itemVariant = {
+        hidden: { opacity: 0, y: 50 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 3,
+                type: "spring",
+            }
+        },
+        exit: {
+            opacity: 0
+        }
+    }
+
+
+    useEffect(() => {
+        dispatch(storeCategory('all'))
+        console.log(cart);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    useEffect(() => {
+        const sum = 0;
+        const group = 0;
+        cart.map(item => {
+            sum += item.quantity
+            group++
+        })
+        setTotalQuantity(sum)
+        setItemGroup(group)
+    }, [cart])
+
+
+    return (
+        <Container>
+            <Navbar />
+
+            <h1>CART</h1>
+
+            <CartGrid>
+                {
+                    cart == false ?
+                        <h1>
+                            No Items <br />
+                            <span>
+                                Don&apos;t leave without getting something nice🛒
+                            </span>
+                        </h1>
+                        :
+                        //Animate Prescence for animating components out of views
+                        <AnimatePresence>
+                            {
+                                cart.map((item, index) => (
+                                    <Item key={index}
+                                        initial="hidden"
+                                        whileInView="visible"
+                                        exit="exit"
+                                        viewport={{ once: true }}
+                                        variants={itemVariant}
+                                    >
+                                        <ItemLeft>
+                                            <h3>{item.brand}</h3>
+                                            <h2>{item.name}</h2>
+                                            {
+                                                item.prices.map(item => {
+                                                    if (item.currency.label === currentCurrency) {
+                                                        return <p key={item.currency.label}>{item.currency.symbol}{item.amount}</p>
+                                                    }
+                                                })
+                                            }
+                                        </ItemLeft>
+                                        <Buttons>
+                                            <button onClick={() => dispatch(incrementQuantity(item.id))}>+</button>
+                                            <p>{item.quantity}</p>
+                                            <button onClick={() => dispatch(decrementQuantity(item.id))}>-</button>
+                                        </Buttons>
+                                        {/* <ItemRight> */}
+                                        <ImageBox>
+                                            <Image
+                                                src={item.gallery[0]}
+                                                alt='item'
+                                                width={80}
+                                                height={80}
+                                                layout='fill'
+                                                objectFit='contain'
+                                                objectPosition='left'
+                                                placeholder='blur'
+                                                blurDataURL={item.gallery[0]}
+                                            />
+                                        </ImageBox>
+                                        {/* </ItemRight> */}
+                                    </Item>
+                                ))
+                            }
+                        </AnimatePresence>
+                }
+
+                <Total>
+                    <p>Item Groups: {itemGroup}</p>
+                    <p>Total Quantity: {totalQuantity}</p>
+                    <p>Total Price: </p>
+
+                    <button>ORDER</button>
+                </Total>
+            </CartGrid>
+        </Container>
+    )
+}
+
+export default CartPage

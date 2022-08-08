@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useSelector, useDispatch } from 'react-redux'
-import { Container } from './navbar.styled'
+import { Container, CartDiv } from './navbar.styled'
 import Logo from '../../public/assets/logo.svg'
 import Cart from '../../public/assets/cart.svg'
 import { changeCurrency, storeCategory } from '../../redux/reducers/cart/cartSlice'
@@ -91,14 +91,12 @@ const Navbar = () => {
                     }
                 </select>
 
-                <div>
-                    {
-                        totalQuantity
-                    }
-                </div>
-                <div>
-                    <Image src={Cart} alt="cart" title='cart' />
-                </div>
+                <CartDiv>
+                    <p>{totalQuantity}</p>
+                    <Link href='/cart'>
+                        <Image src={Cart} alt="cart" title='cart' width={30} height={30} />
+                    </Link >
+                </CartDiv>
             </div>
         </Container>
     )

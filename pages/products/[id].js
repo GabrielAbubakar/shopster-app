@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import Navbar from '../../components/navbar'
 import {
+    Attributes,
     Container,
     ImageBox,
     ImageShowcase,
@@ -54,8 +55,12 @@ const ProductDetails = ({ product }) => {
 
     const dispatch = useDispatch()
     const { currentCurrency } = useSelector(state => state.persistedReducer.cart)
-    const { name, gallery, brand, description, prices } = product.data.product
+    const { name, gallery, brand, description, prices, attributes } = product.data.product
     const [activeImage, setActiveImage] = useState(0)
+
+    const [attributeState, setAttributeState] = useState({})
+
+    // console.log(attributes)
 
 
     return (
@@ -105,13 +110,31 @@ const ProductDetails = ({ product }) => {
                                     <h2>{name}</h2>
                                 </div>
 
-                                <div>
-                                    q
-                                </div>
-
-                                <div>
-                                    q
-                                </div>
+                                {/* {
+                                    attributes && attributes.map((attribute, index) => (
+                                        <Attributes key={index}>
+                                            <p>{attribute.name}:</p>
+                                            <ul>
+                                                {
+                                                    attribute.items.map((item, index) => (
+                                                        <button key={index}
+                                                            onClick={() => {
+                                                                setAttributeState({
+                                                                    ...attributeState, [attribute.name]: item.displayValue
+                                                                })
+                                                                console.log(attributeState);
+                                                            }}
+                                                        >
+                                                            <li>
+                                                                {item.displayValue}
+                                                            </li>
+                                                        </button>
+                                                    ))
+                                                }
+                                            </ul>
+                                        </Attributes>
+                                    ))
+                                } */}
 
                                 <Price>
                                     <h4>Price</h4>

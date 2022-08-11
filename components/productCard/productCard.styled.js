@@ -17,8 +17,8 @@ export const Container = styled(motion.div)`
     }
 
     figure {
-        width: 356px;
-        max-height: 338px;
+        /* width: 356px;
+        max-height: 338px; */
         margin-bottom: 1rem;
         overflow: hidden;
         border: 1px solid rgba(128, 128, 128, 0.134);

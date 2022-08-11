@@ -13,6 +13,7 @@ const CartPage = () => {
 
     const [totalQuantity, setTotalQuantity] = useState()
     const [itemGroup, setItemGroup] = useState()
+    const [totalPrice, setTotalPrice] = useState()
 
     const itemVariant = {
         hidden: { opacity: 0, y: 50 },
@@ -31,12 +32,18 @@ const CartPage = () => {
 
 
     useEffect(() => {
-        dispatch(storeCategory('all'))
-        console.log(cart);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+        //Calculate the total price to be paid based on currently active currency / Happens on cart and currentCurrency state change
+        const total = 0
+        const priceArr = []
+        cart.map((item, i) => {
+            priceArr.push(item.prices.find((item) => item.currency.label === currentCurrency))
+            total += priceArr[i].amount * item.quantity
+        })
+        setTotalPrice(total)
+    }, [cart, currentCurrency])
 
     useEffect(() => {
+        //Calculate the total quantities on cart state change
         const sum = 0;
         const group = 0;
         cart.map(item => {
@@ -46,6 +53,12 @@ const CartPage = () => {
         setTotalQuantity(sum)
         setItemGroup(group)
     }, [cart])
+
+    useEffect(() => {
+        //Change category to all on page load
+        dispatch(storeCategory('all'))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
 
     return (
@@ -115,7 +128,7 @@ const CartPage = () => {
                 <Total>
                     <p>Item Groups: {itemGroup}</p>
                     <p>Total Quantity: {totalQuantity}</p>
-                    <p>Total Price: </p>
+                    <p>Total Price: {totalPrice}</p>
 
                     <button>ORDER</button>
                 </Total>

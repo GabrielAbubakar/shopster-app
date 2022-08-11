@@ -42,13 +42,23 @@ export const cartSlice = createSlice({
         },
         changeCurrency: (state, action) => {
             state.currentCurrency = action.payload
+        },
+        clearCart: (state) => {
+            state.cart = []
         }
     }
 })
 
 
 
-export const { storeCategory, addToCart, incrementQuantity, decrementQuantity, removeFromCart, changeCurrency } = cartSlice.actions
+export const {
+    storeCategory,
+    addToCart,
+    incrementQuantity,
+    decrementQuantity,
+    removeFromCart,
+    changeCurrency
+} = cartSlice.actions
 
 
 

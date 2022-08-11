@@ -47,10 +47,10 @@ export const CartDiv = styled(motion.div)`
     position: relative;
 
     &> p {
-        width: 15px;
-        height: 15px;
+        width: 10px;
+        height: 10px;
         position: absolute;
-        top: -15px;
+        top: -10px;
         right: -15px;
         border-radius: 50%;
         background-color: #111;
@@ -60,5 +60,6 @@ export const CartDiv = styled(motion.div)`
         display: flex;
         justify-content: center;
         align-items: center;
+        font-size: .8rem;
     }
 `

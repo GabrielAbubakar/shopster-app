@@ -73,8 +73,10 @@ export const Total = styled(motion.div)`
         margin-bottom: .7rem;
     }
 
-    button {
+    button:last-of-type {
         cursor: pointer;
+        display: block;
+        margin-top: 2rem;
         background-color: #58e783;
         border: 0;
         padding: .8rem 6rem;
@@ -82,4 +84,9 @@ export const Total = styled(motion.div)`
         font-size: 1.2rem;
         text-transform: uppercase;
     }
+`
+
+export const Modal = styled(motion.div)`
+    padding: 2rem;
+    background-color: #eee;
 `

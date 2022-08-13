@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 import Image from "next/image"
 import { useSelector, useDispatch } from 'react-redux'
-import { storeCategory, incrementQuantity, decrementQuantity } from '../redux/reducers/cart/cartSlice'
+import { storeCategory, incrementQuantity, decrementQuantity, clearCart } from '../redux/reducers/cart/cartSlice'
 import Navbar from "../components/navbar"
-import { Container, CartGrid, Item, ItemLeft, ItemRight, ImageBox, Buttons, Total } from "../components/styled/CartPage.styled"
+import { Container, CartGrid, Item, ItemLeft, ItemRight, ImageBox, Buttons, Total, Modal } from "../components/styled/CartPage.styled"
 import { AnimatePresence } from 'framer-motion'
 
 const CartPage = () => {
@@ -14,6 +14,8 @@ const CartPage = () => {
     const [totalQuantity, setTotalQuantity] = useState()
     const [itemGroup, setItemGroup] = useState()
     const [totalPrice, setTotalPrice] = useState()
+
+    const [displayModal, setDisplayModal] = useState(false)
 
     const itemVariant = {
         hidden: { opacity: 0, y: 50 },
@@ -26,7 +28,21 @@ const CartPage = () => {
             }
         },
         exit: {
-            opacity: 0
+            opacity: 0,
+            transition: {
+                duration: 3,
+                type: "spring",
+            }
+        }
+    }
+
+    const orderProducts = () => {
+        if (cart.length) {
+            dispatch(clearCart())
+            setDisplayModal(true)
+            setTimeout(() => {
+                setDisplayModal(false)
+            }, 3000);
         }
     }
 
@@ -67,7 +83,20 @@ const CartPage = () => {
 
             <h1>CART</h1>
 
-            <CartGrid>
+
+            <AnimatePresence>
+                <Modal
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    style={{ display: displayModal ? 'block' : 'none' }}
+                >
+                    <h2>Your items will be delivered to your location🚚🚚🚚</h2>
+                </Modal>
+            </AnimatePresence>
+
+            <CartGrid
+                style={{ display: displayModal ? 'none' : 'block' }}
+            >
                 {
                     cart == false ?
                         <h1>
@@ -128,9 +157,9 @@ const CartPage = () => {
                 <Total>
                     <p>Item Groups: {itemGroup}</p>
                     <p>Total Quantity: {totalQuantity}</p>
-                    <p>Total Price: {totalPrice && totalPrice.toFixed(2)}</p>
-
-                    <button>ORDER</button>
+                    <p>Total Price: {totalPrice && totalPrice.toFixed(2)} {currentCurrency}</p>
+                    <button onClick={() => dispatch(clearCart())}>Clear Cart🚮</button>
+                    <button onClick={() => orderProducts()}>ORDER</button>
                 </Total>
             </CartGrid>
         </Container>

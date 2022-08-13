@@ -56,7 +56,7 @@ const ProductCard = (item) => {
                     {/* <p>${prices[0].amount}</p> */}
                 </div>
             </Link>
-            <button title='Add to cart' onClick={() => dispatch(addToCart(item))}>
+            <button title={`Add ${name} to cart`} onClick={() => dispatch(addToCart(item))}>
                 <Image src={Cartsvg} alt="cart" />
             </button>
         </Container>

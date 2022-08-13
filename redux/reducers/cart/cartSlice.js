@@ -57,7 +57,8 @@ export const {
     incrementQuantity,
     decrementQuantity,
     removeFromCart,
-    changeCurrency
+    changeCurrency,
+    clearCart
 } = cartSlice.actions
 
 

@@ -54,13 +54,13 @@ export async function getStaticProps({ params }) {
 const ProductDetails = ({ product }) => {
 
     const dispatch = useDispatch()
-    const { currentCurrency } = useSelector(state => state.persistedReducer.cart)
+    const { currentCurrency, cart } = useSelector(state => state.persistedReducer.cart)
     const { name, gallery, brand, description, prices, attributes } = product.data.product
     const [activeImage, setActiveImage] = useState(0)
 
-    const [attributeState, setAttributeState] = useState({})
+    // const [attributeState, setAttributeState] = useState({})
 
-    // console.log(attributes)
+    console.log(product)
 
 
     return (
@@ -146,12 +146,32 @@ const ProductDetails = ({ product }) => {
                                         })
                                     }
 
-                                    <button onClick={() => dispatch(addToCart(product.data.product))}>Add to Cart</button>
+                                    <button onClick={() => dispatch(addToCart(product.data.product))}>
+                                        Add to Cart
+                                    </button>
+
+                                    {/* {
+                                        cart && cart.find(item => item.name === name) ?
+                                            <button
+                                                disabled
+                                                style={{ backgroundColor: '#333' }}
+                                            >
+                                                Added to Cart
+                                            </button>
+                                            :
+                                            <button onClick={() => dispatch(addToCart(product.data.product))}>
+                                                Add to Cart
+                                            </button>
+                                    } */}
                                 </Price>
 
-                                <p>
-                                    {description.replace(/(<([^>]+)>)/gi, "")}
-                                </p>
+                                {/* {
+                                    cart && cart.find(item => item.name === name) ?
+                                        <p>is in cart</p>
+                                        :
+                                        <p>not in cart</p>
+
+                                } */}
                             </ItemDetails>
                         </ProductGrid>
                     </Container>

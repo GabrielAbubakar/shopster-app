@@ -91,12 +91,12 @@ const Navbar = () => {
                     }
                 </select>
 
-                <CartDiv>
-                    <p>{totalQuantity}</p>
-                    <Link href='/cart'>
+                <Link href='/cart'>
+                    <CartDiv>
+                        <p>{totalQuantity}</p>
                         <Image src={Cart} alt="cart" title='cart' width={30} height={30} />
-                    </Link >
-                </CartDiv>
+                    </CartDiv>
+                </Link >
             </div>
         </Container>
     )

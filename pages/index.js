@@ -45,6 +45,8 @@ const Home = ({ productsData }) => {
         })
         setProducts(res.data.category.products)
         dispatch(storeCategory(res.data.category.name))
+        console.log(products)
+
     }
 
     useEffect(() => {
@@ -52,10 +54,7 @@ const Home = ({ productsData }) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentCategory])
 
-    //Sort alphabetically by name whenever products changes
-    useEffect(() => {
-        setProducts([...products].sort((a, b) => a.name.localeCompare(b.name)))
-    }, [products])
+
 
 
 
@@ -73,7 +72,7 @@ const Home = ({ productsData }) => {
 
                 <ProductGrid>
                     {
-                        products && products.map(item => (
+                        products && [...products].sort((a, b) => a.name.localeCompare(b.name)).map(item => (
                             <ProductCard key={item.id} {...item} />
                         ))
                     }

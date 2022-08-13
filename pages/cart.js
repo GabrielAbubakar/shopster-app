@@ -128,7 +128,7 @@ const CartPage = () => {
                 <Total>
                     <p>Item Groups: {itemGroup}</p>
                     <p>Total Quantity: {totalQuantity}</p>
-                    <p>Total Price: {totalPrice}</p>
+                    <p>Total Price: {totalPrice && totalPrice.toFixed(2)}</p>
 
                     <button>ORDER</button>
                 </Total>

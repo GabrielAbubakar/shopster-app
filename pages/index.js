@@ -47,14 +47,15 @@ const Home = ({ productsData }) => {
         dispatch(storeCategory(res.data.category.name))
     }
 
-    // useEffect(() => {
-    //     dispatch(storeCategory(categoryData))
-    // }, [])
-
     useEffect(() => {
         fetchCategory(currentCategory);
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentCategory])
+
+    //Sort alphabetically by name whenever products changes
+    useEffect(() => {
+        setProducts([...products].sort((a, b) => a.name.localeCompare(b.name)))
+    }, [products])
 
 
 

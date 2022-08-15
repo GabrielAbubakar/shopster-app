@@ -13,5 +13,15 @@ export const GlobalStyles = createGlobalStyle`
         padding-inline: 8rem;
         font-family: sans-serif;
         margin-bottom: 7rem;
+
+        @media (max-width: 768px) {
+            display: flex;
+            width: 100vw;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background-color: #333;
+            color: #eee;
+        }
     }
 `

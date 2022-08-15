@@ -3,6 +3,23 @@ import { motion } from "framer-motion";
 
 export const Container = styled(motion.section)`
 
+
+    &>*:nth-child(2), &>*:nth-child(3) {
+
+        @media (max-width: 768px) {
+            display: none;
+        }
+    }
+
+
+
+    .mobile-view {
+        display: none;
+
+        @media (max-width: 768px) {
+            display: block;
+        }
+    }
 `
 
 export const Content = styled(motion.div)`

@@ -60,7 +60,7 @@ const ProductDetails = ({ product }) => {
 
     // const [attributeState, setAttributeState] = useState({})
 
-    console.log(product)
+    // console.log(product)
 
 
     return (
@@ -146,11 +146,7 @@ const ProductDetails = ({ product }) => {
                                         })
                                     }
 
-                                    <button onClick={() => dispatch(addToCart(product.data.product))}>
-                                        Add to Cart
-                                    </button>
-
-                                    {/* {
+                                    {
                                         cart && cart.find(item => item.name === name) ?
                                             <button
                                                 disabled
@@ -162,16 +158,12 @@ const ProductDetails = ({ product }) => {
                                             <button onClick={() => dispatch(addToCart(product.data.product))}>
                                                 Add to Cart
                                             </button>
-                                    } */}
+                                    }
                                 </Price>
 
-                                {/* {
-                                    cart && cart.find(item => item.name === name) ?
-                                        <p>is in cart</p>
-                                        :
-                                        <p>not in cart</p>
-
-                                } */}
+                                <p>
+                                    {description.replace(/(<([^>]+)>)/gi, "").substring(0, 280)}
+                                </p>
                             </ItemDetails>
                         </ProductGrid>
                     </Container>

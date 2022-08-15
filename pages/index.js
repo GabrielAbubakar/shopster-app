@@ -45,8 +45,7 @@ const Home = ({ productsData }) => {
         })
         setProducts(res.data.category.products)
         dispatch(storeCategory(res.data.category.name))
-        console.log(products)
-
+        // console.log(products)
     }
 
     useEffect(() => {

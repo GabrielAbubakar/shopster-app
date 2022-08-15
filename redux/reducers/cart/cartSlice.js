@@ -17,10 +17,11 @@ export const cartSlice = createSlice({
         },
         addToCart: (state, action) => {
             const itemExists = state.cart.find((item) => item.id === action.payload.id);
-            if (itemExists) {
-                itemExists.quantity++;
-            } else {
+            if (!itemExists) {
                 state.cart.push({ ...action.payload, quantity: 1 });
+            } else {
+                itemExists.quantity++
+                // console.log(action.payload.id);
             }
         },
         incrementQuantity: (state, action) => {

@@ -5,16 +5,9 @@ import Cartsvg from '../../public/assets/addCart.svg'
 import { Container } from './productCard.styled'
 import { addToCart } from '../../redux/reducers/cart/cartSlice'
 
-
-
-
-
 const ProductCard = (item) => {
-
-    const { id, gallery, name, prices } = item
-
+    const { id, gallery, name, prices, inStock } = item
     const { currentCurrency } = useSelector((state => state.persistedReducer.cart))
-
     const dispatch = useDispatch();
 
     const itemVariant = {
@@ -35,9 +28,13 @@ const ProductCard = (item) => {
             whileInView="visible"
             viewport={{ once: true }}
             variants={itemVariant}
-        >
+            style={{ filter: !inStock && 'grayscale(100)' }}>
+
             <Link href={'/products/' + id}>
                 <div>
+                    <p style={{ display: inStock ? 'none' : 'flex' }} className='inStock'>
+                        Out of Stock
+                    </p>
                     <figure>
                         <Image
                             src={gallery[0]}
@@ -53,12 +50,19 @@ const ProductCard = (item) => {
                             }
                         })
                     }
-                    {/* <p>${prices[0].amount}</p> */}
                 </div>
             </Link>
-            <button title={`Add ${name} to cart`} onClick={() => dispatch(addToCart(item))}>
-                <Image src={Cartsvg} alt="cart" />
-            </button>
+            {
+                inStock ? (
+                    <button title={`Add ${name} to cart`} onClick={() => dispatch(addToCart(item))}>
+                        <Image src={Cartsvg} alt="cart" />
+                    </button>
+                ) : (
+                    <button disabled title={`Add ${name} to cart`} onClick={() => dispatch(addToCart(item))}>
+                        <Image src={Cartsvg} alt="cart" />
+                    </button>
+                )
+            }
         </Container>
     )
 }

@@ -6,6 +6,23 @@ export const Container = styled(motion.div)`
     justify-self: center;
     position: relative;
 
+    .inStock {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+        font-size: 2.3rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        color: #888;
+        background-color: #a8acb040;
+        z-index: 10;
+    }
+
     &:hover {
         box-shadow: 0 4px 35px #a8acb060;
         transition: all .2s ease;

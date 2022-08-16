@@ -10,7 +10,9 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     body {
-        padding-inline: 8rem;
+        width: 85%;
+        margin-inline: auto;
+        /* padding-inline: 8rem; */
         font-family: sans-serif;
         margin-bottom: 7rem;
 
@@ -22,6 +24,7 @@ export const GlobalStyles = createGlobalStyle`
             align-items: center;
             background-color: #333;
             color: #eee;
+            padding: 4rem;
         }
     }
 `

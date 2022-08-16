@@ -7,7 +7,6 @@ import { Container, CartGrid, Item, ItemLeft, ItemRight, ImageBox, Buttons, Tota
 import { AnimatePresence } from 'framer-motion'
 
 const CartPage = () => {
-
     const dispatch = useDispatch()
     const { cart, currentCurrency } = useSelector((state => state.persistedReducer.cart))
 
@@ -80,10 +79,7 @@ const CartPage = () => {
     return (
         <Container>
             <Navbar />
-
             <h1>CART</h1>
-
-
             <AnimatePresence>
                 <Modal
                     initial={{ opacity: 0, y: 10 }}
@@ -93,7 +89,6 @@ const CartPage = () => {
                     <h2>Your items will be delivered to your location🚚🚚🚚</h2>
                 </Modal>
             </AnimatePresence>
-
             <CartGrid
                 style={{ display: displayModal ? 'none' : 'block' }}
             >

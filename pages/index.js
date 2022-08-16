@@ -8,8 +8,6 @@ import ProductCard from '../components/productCard'
 import { storeCategory } from '../redux/reducers/cart/cartSlice'
 
 
-
-
 export async function getStaticProps() {
     const res = await client.query({
         query: getAllProducts,
@@ -24,17 +22,11 @@ export async function getStaticProps() {
     }
 }
 
-
-
 const Home = ({ productsData }) => {
 
     const dispatch = useDispatch();
     const { currentCategory } = useSelector((state => state.persistedReducer.cart))
-
-
     const [products, setProducts] = useState(productsData)
-
-
 
     const fetchCategory = async (cat) => {
         const res = await client.query({
@@ -45,7 +37,6 @@ const Home = ({ productsData }) => {
         })
         setProducts(res.data.category.products)
         dispatch(storeCategory(res.data.category.name))
-        // console.log(products)
     }
 
     useEffect(() => {
@@ -54,26 +45,15 @@ const Home = ({ productsData }) => {
     }, [currentCategory])
 
 
-
-
-
-
     return (
         <Container>
-
             <p className="mobile-view">
                 Due to some constraints in design, this application is not available to view on mobile.
                 Please switch to a desktop view
             </p>
-
-
-
             <Navbar />
-
             <Content>
-
                 <h1>{currentCategory} Products</h1>
-
                 <ProductGrid>
                     {
                         products && [...products].sort((a, b) => a.name.localeCompare(b.name)).map(item => (
@@ -82,7 +62,6 @@ const Home = ({ productsData }) => {
                     }
                 </ProductGrid>
             </Content>
-
         </Container>
     )
 }

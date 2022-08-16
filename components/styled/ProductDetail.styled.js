@@ -105,6 +105,11 @@ export const Price = styled(motion.div)`
 
 export const Attributes = styled(motion.div)`
 
+    button {
+        padding: .3rem .5rem;
+        margin-right: .4rem;
+    }
+
 
     li {
         list-style-type: none;

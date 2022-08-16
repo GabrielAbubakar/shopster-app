@@ -55,31 +55,20 @@ const ProductDetails = ({ product }) => {
 
     const dispatch = useDispatch()
     const { currentCurrency, cart } = useSelector(state => state.persistedReducer.cart)
-    const { name, gallery, brand, description, prices, attributes } = product.data.product
+    const { name, gallery, brand, description, prices } = product.data.product
     const [activeImage, setActiveImage] = useState(0)
-
-    // const [attributeState, setAttributeState] = useState({})
-
-    // console.log(product)
-
 
     return (
         <div>
             <Navbar />
             {
-                product.loading === true && (
+                product.loading ? (
                     <div>
                         Loading...
                     </div>
-                )
-            }
-
-            {
-                product.loading === false && (
+                ) : (
                     <Container>
-
                         <ProductGrid>
-
                             <ImagesRow>
                                 {
                                     gallery.map((item, i) => (
@@ -109,32 +98,6 @@ const ProductDetails = ({ product }) => {
                                     <h3>{brand}</h3>
                                     <h2>{name}</h2>
                                 </div>
-
-                                {/* {
-                                    attributes && attributes.map((attribute, index) => (
-                                        <Attributes key={index}>
-                                            <p>{attribute.name}:</p>
-                                            <ul>
-                                                {
-                                                    attribute.items.map((item, index) => (
-                                                        <button key={index}
-                                                            onClick={() => {
-                                                                setAttributeState({
-                                                                    ...attributeState, [attribute.name]: item.displayValue
-                                                                })
-                                                                console.log(attributeState);
-                                                            }}
-                                                        >
-                                                            <li>
-                                                                {item.displayValue}
-                                                            </li>
-                                                        </button>
-                                                    ))
-                                                }
-                                            </ul>
-                                        </Attributes>
-                                    ))
-                                } */}
 
                                 <Price>
                                     <h4>Price</h4>

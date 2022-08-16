@@ -19,7 +19,7 @@ export const Container = styled(motion.div)`
         font-weight: 700;
         text-transform: uppercase;
         color: #888;
-        background-color: #a8acb040;
+        background-color: #a8acb020;
         z-index: 10;
     }
 

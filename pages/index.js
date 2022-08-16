@@ -7,8 +7,8 @@ import Navbar from '../components/navbar'
 import ProductCard from '../components/productCard'
 import { storeCategory } from '../redux/reducers/cart/cartSlice'
 
-
-export async function getStaticProps() {
+// Server Side Generation (at request time)
+export async function getServerSideProps() {
     const res = await client.query({
         query: getAllProducts,
     })
@@ -18,7 +18,6 @@ export async function getStaticProps() {
             productsData: res.data.category.products,
             categoryData: res.data.category.name,
         },
-        revalidate: 1
     }
 }
 
@@ -56,6 +55,7 @@ const Home = ({ productsData }) => {
                 <h1>{currentCategory} Products</h1>
                 <ProductGrid>
                     {
+                        // Sort a copy of the products alphabetically and then map into JSX card components
                         products && [...products].sort((a, b) => a.name.localeCompare(b.name)).map(item => (
                             <ProductCard key={item.id} {...item} />
                         ))

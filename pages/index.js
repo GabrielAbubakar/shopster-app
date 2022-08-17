@@ -46,10 +46,10 @@ const Home = ({ productsData }) => {
 
     return (
         <Container>
-            <p className="mobile-view">
+            {/* <p className="mobile-view">
                 Due to some constraints in design, this application is not available to view on mobile.
                 Please switch to a desktop view
-            </p>
+            </p> */}
             <Navbar />
             <Content>
                 <h1>{currentCategory} Products</h1>

@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { devices } from "./mediaqueries";
+
 
 
 export const Container = styled(motion.div)`
@@ -23,6 +25,11 @@ export const Item = styled(motion.div)`
     justify-content: space-between;
     border-top: 2px solid #eee;
     padding: 2rem 0;
+    gap: 1rem;
+
+
+    @media ${devices.tablet} {
+    }
     /* &>* {
         flex: 1;
     } */
@@ -34,6 +41,20 @@ export const ItemLeft = styled(motion.div)`
         font-weight: 800;
         color: #555;
         font-size: 1.3rem;
+
+        @media ${devices.mobileL} {
+            font-size: 1rem;
+        }
+    }
+
+    h2 {
+        font-size: 1.8rem;
+        font-weight: 800;
+        text-transform: uppercase;
+
+        @media ${devices.tablet} {
+            font-size: 1.5rem;
+        }
     }
 `
 
@@ -54,6 +75,11 @@ export const Buttons = styled(motion.div)`
         font-size: 1.3rem;
         padding: .4rem .8rem;
         cursor: pointer;
+        align-self: stretch;
+
+        @media ${devices.mobileL} {
+            padding: .2rem .4rem;
+        }
     }
 `
 
@@ -62,7 +88,16 @@ export const ImageBox = styled(motion.div)`
     height: 200px;
     position: relative;
     border: 3px solid #eee;
-    margin-left: 1rem;
+
+    @media ${devices.tablet} {
+        width: 150px;
+        height: 150px;
+    }
+
+    @media ${devices.mobileL} {
+        width: 100px;
+        height: 100px;
+    }
 `
 
 export const Total = styled(motion.div)`

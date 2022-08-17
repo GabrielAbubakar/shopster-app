@@ -137,7 +137,7 @@ const CartPage = () => {
                                                 height={80}
                                                 layout='fill'
                                                 objectFit='contain'
-                                                objectPosition='left'
+                                                objectPosition='center'
                                                 placeholder='blur'
                                                 blurDataURL={item.gallery[0]}
                                             />

@@ -55,7 +55,7 @@ const ProductDetails = ({ product }) => {
 
     const dispatch = useDispatch()
     const { currentCurrency, cart } = useSelector(state => state.persistedReducer.cart)
-    const { name, gallery, brand, description, prices } = product.data.product
+    const { name, gallery, brand, description, prices, inStock } = product.data.product
     const [activeImage, setActiveImage] = useState(0)
 
     return (
@@ -67,7 +67,9 @@ const ProductDetails = ({ product }) => {
                         Loading...
                     </div>
                 ) : (
-                    <Container>
+                    <Container
+
+                    >
                         <ProductGrid>
                             <ImagesRow>
                                 {
@@ -110,17 +112,24 @@ const ProductDetails = ({ product }) => {
                                     }
 
                                     {
-                                        cart && cart.find(item => item.name === name) ?
+                                        cart && inStock && cart.find(item => item.name === name) ?
                                             <button
                                                 disabled
                                                 style={{ backgroundColor: '#333' }}
                                             >
                                                 Added to Cart
                                             </button>
-                                            :
-                                            <button onClick={() => dispatch(addToCart(product.data.product))}>
-                                                Add to Cart
-                                            </button>
+                                            : cart && !inStock ?
+                                                <button
+                                                    disabled
+                                                    style={{ backgroundColor: '#333' }}
+                                                    onClick={() => dispatch(addToCart(product.data.product))}>
+                                                    Out of Stock
+                                                </button>
+                                                :
+                                                <button onClick={() => dispatch(addToCart(product.data.product))}>
+                                                    Add to Cart
+                                                </button>
                                     }
                                 </Price>
 

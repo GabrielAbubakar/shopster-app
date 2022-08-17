@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { devices } from "./mediaqueries";
 
 export const GlobalStyles = createGlobalStyle`
     *,
@@ -10,11 +11,16 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     body {
-        padding-inline: 8rem;
+        width: 85%;
+        margin-inline: auto;
         font-family: sans-serif;
         margin-bottom: 7rem;
 
-        @media (max-width: 768px) {
+        @media ${devices.mobileL} {
+            width: 90%;
+        }
+
+        /* @media (max-width: 768px) {
             display: flex;
             width: 100vw;
             height: 100vh;
@@ -22,6 +28,7 @@ export const GlobalStyles = createGlobalStyle`
             align-items: center;
             background-color: #333;
             color: #eee;
-        }
+            padding: 4rem;
+        } */
     }
 `

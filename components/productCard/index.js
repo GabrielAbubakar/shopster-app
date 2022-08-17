@@ -24,6 +24,7 @@ const ProductCard = (item) => {
 
     return (
         <Container
+            title='Click to view product details'
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -31,7 +32,7 @@ const ProductCard = (item) => {
             style={{ filter: !inStock && 'grayscale(100)' }}>
 
             <Link href={'/products/' + id}>
-                <div>
+                <a style={{ textDecoration: 'none', color: 'inherit' }}>
                     <p style={{ display: inStock ? 'none' : 'flex' }} className='inStock'>
                         Out of Stock
                     </p>
@@ -50,7 +51,8 @@ const ProductCard = (item) => {
                             }
                         })
                     }
-                </div>
+                </a>
+
             </Link>
             {
                 inStock ? (
@@ -58,7 +60,7 @@ const ProductCard = (item) => {
                         <Image src={Cartsvg} alt="cart" />
                     </button>
                 ) : (
-                    <button disabled title={`Add ${name} to cart`} onClick={() => dispatch(addToCart(item))}>
+                    <button disabled title={`Sorry, ${name} is unavailable`} onClick={() => dispatch(addToCart(item))}>
                         <Image src={Cartsvg} alt="cart" />
                     </button>
                 )

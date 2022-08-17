@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { devices } from "./mediaqueries";
 
 export const Container = styled(motion.div)`
 
@@ -16,12 +17,27 @@ export const ProductGrid = styled(motion.div)`
     display: grid;
     grid-template-columns: .1fr 1fr .6fr;
     gap: 4rem;
+
+
+
+    @media ${devices.tablet} {
+        display: flex;
+        flex-direction: column;
+    }
 `
 
 export const ImagesRow = styled(motion.div)`
     display: flex;
     flex-direction: column;
     gap: 2rem;
+
+    @media ${devices.tablet} {
+        flex-direction: row;
+        order: 2;
+        gap: 1rem;
+    }
+
+
 `
 
 export const ImageBox = styled(motion.figure)`
@@ -42,7 +58,6 @@ export const ImageBox = styled(motion.figure)`
         object-fit: contain;
     }
 
-    
 `
 
 
@@ -50,6 +65,10 @@ export const ImageShowcase = styled(motion.div)`
     width: 100%;
     height: 500px;
     position: relative;
+
+    @media ${devices.tablet} {
+        order: 1;
+    }
 `
 
 export const ItemDetails = styled(motion.div)`
@@ -59,6 +78,12 @@ export const ItemDetails = styled(motion.div)`
     background-color: #efefef;
     padding: 2rem;
     align-self: flex-start;
+
+    @media ${devices.tablet} {
+        order: 3;
+        align-self: stretch;
+        
+    }
 
     h2 {
 

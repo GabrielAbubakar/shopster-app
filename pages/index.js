@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import Head from 'next/head'
 import { useSelector, useDispatch } from 'react-redux'
 import client from '../graphql/apolloclient'
 import { getAllProducts, getProductsByCategory } from '../graphql/queries'
@@ -46,6 +47,12 @@ const Home = ({ productsData }) => {
 
     return (
         <Container>
+            <Head>
+                <title>Shopster Ecommerce</title>
+                <meta name="description" content="Shopster Ecommerce" />
+                <link rel="icon" href="🛒" />
+                {/* <link rel="icon" href="😁" /> */}
+            </Head>
             {/* <p className="mobile-view">
                 Due to some constraints in design, this application is not available to view on mobile.
                 Please switch to a desktop view

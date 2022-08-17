@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Head from 'next/head'
 import { useState, useEffect } from 'react'
 import Navbar from '../../components/navbar'
 import {
@@ -60,6 +61,12 @@ const ProductDetails = ({ product }) => {
 
     return (
         <div>
+            <Head>
+                <title>Shopster Product: {name}</title>
+                <meta name="description" content={`Shopster Product: ${name}`} />
+                <link rel="icon" href="🛒" />
+                {/* <link rel="icon" href="😁" /> */}
+            </Head>
             <Navbar />
             {
                 product.loading ? (

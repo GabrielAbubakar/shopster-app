@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import Image from "next/image"
+import Head from "next/head"
 import { useSelector, useDispatch } from 'react-redux'
 import { storeCategory, incrementQuantity, decrementQuantity, clearCart } from '../redux/reducers/cart/cartSlice'
 import Navbar from "../components/navbar"
@@ -78,6 +79,12 @@ const CartPage = () => {
 
     return (
         <Container>
+            <Head>
+                <title>Shopster Ecommerce Cart</title>
+                <meta name="description" content="Shopster Ecommerce Cart" />
+                <link rel="icon" href="🛒" />
+                {/* <link rel="icon" href="😁" /> */}
+            </Head>
             <Navbar />
             <h1>CART</h1>
             <AnimatePresence>

@@ -16,9 +16,9 @@ export const GlobalStyles = createGlobalStyle`
         font-family: sans-serif;
         margin-bottom: 7rem;
 
-        /* @media ${devices.desktop} {
-            width: 1440px;
-        } */
+        @media ${devices.mobileL} {
+            width: 90%;
+        }
 
         /* @media (max-width: 768px) {
             display: flex;

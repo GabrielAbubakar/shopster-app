@@ -24,6 +24,7 @@ const ProductCard = (item) => {
 
     return (
         <Container
+            title='Click to view product details'
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -59,7 +60,7 @@ const ProductCard = (item) => {
                         <Image src={Cartsvg} alt="cart" />
                     </button>
                 ) : (
-                    <button disabled title={`Add ${name} to cart`} onClick={() => dispatch(addToCart(item))}>
+                    <button disabled title={`Sorry, ${name} is unavailable`} onClick={() => dispatch(addToCart(item))}>
                         <Image src={Cartsvg} alt="cart" />
                     </button>
                 )

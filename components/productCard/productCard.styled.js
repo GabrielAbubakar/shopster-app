@@ -1,16 +1,18 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { devices } from "../styled/mediaqueries"
 
 export const Container = styled(motion.div)`
     padding: 1rem;
     justify-self: center;
     position: relative;
+    border: 1px solid rgba(128, 128, 128, 0.134);
+
 
     .inStock {
         position: absolute;
         top: 0;
         left: 0;
-        display: flex;
         justify-content: center;
         align-items: center;
         width: 100%;
@@ -21,6 +23,10 @@ export const Container = styled(motion.div)`
         color: #888;
         background-color: #a8acb020;
         z-index: 10;
+
+        @media ${devices.mobileL} {
+            font-size: 2.1rem;
+        }
     }
 
     &:hover {
@@ -63,6 +69,7 @@ export const Container = styled(motion.div)`
         cursor: pointer;
         display: none;
         transition: all .4s ease;
+        z-index: 10;
 
         &:hover {
             transform: scale(1.1);

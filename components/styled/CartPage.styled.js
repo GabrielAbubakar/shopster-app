@@ -48,6 +48,10 @@ export const ItemLeft = styled(motion.div)`
     }
 
     h2 {
+        font-size: 1.8rem;
+        font-weight: 800;
+        text-transform: uppercase;
+
         @media ${devices.tablet} {
             font-size: 1.5rem;
         }
@@ -71,6 +75,11 @@ export const Buttons = styled(motion.div)`
         font-size: 1.3rem;
         padding: .4rem .8rem;
         cursor: pointer;
+        align-self: stretch;
+
+        @media ${devices.mobileL} {
+            padding: .2rem .4rem;
+        }
     }
 `
 
@@ -79,6 +88,16 @@ export const ImageBox = styled(motion.div)`
     height: 200px;
     position: relative;
     border: 3px solid #eee;
+
+    @media ${devices.tablet} {
+        width: 150px;
+        height: 150px;
+    }
+
+    @media ${devices.mobileL} {
+        width: 100px;
+        height: 100px;
+    }
 `
 
 export const Total = styled(motion.div)`

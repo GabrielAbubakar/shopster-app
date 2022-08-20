@@ -10,15 +10,17 @@ import { PersistGate } from 'redux-persist/integration/react';
 const persistor = persistStore(store);
 
 
-it("run test", () => {
-    render(
-        <Provider store={store}>
-            <PersistGate persistor={persistor}>
-                <Home />
-            </PersistGate>
-        </Provider>
-    )
+describe("Tests for home page", () => {
+    it("run test", () => {
+        render(
+            <Provider store={store}>
+                <PersistGate persistor={persistor}>
+                    <Home />
+                </PersistGate>
+            </Provider>
+        )
 
-    const element = screen.getByRole('heading')
-    expect(element).toBeInTheDocument()
+        const element = screen.getByRole('heading')
+        expect(element).toBeInTheDocument()
+    })
 })

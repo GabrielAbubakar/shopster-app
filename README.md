@@ -26,3 +26,7 @@ There were various new tools I learned in the development of this application an
 - Deeper understanding of the SSG, SSR and ISG concepts and capabilities of the Nextjs framework. 
 - Utilizing Redux and Redux for complex and immutable state management in applications.
 - The protocols for the consumption of GraphQL APIs
+
+
+## Testing
+Testing was setup for this project using the structure found at [this article:](https://blog.jarrodwatts.com/how-to-set-up-nextjs-with-jest-react-testing-library-and-playwright)

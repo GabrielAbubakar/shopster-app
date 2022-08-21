@@ -16,22 +16,22 @@ export const cartSlice = createSlice({
             state.currentCategory = action.payload
         },
         addToCart: (state, action) => {
-            const itemExists = state.cart.find((item) => item.id === action.payload.id);
+            const itemExists = state.cart.find((item) => item.itemId === action.payload);
             if (!itemExists) {
-                state.cart.push({ ...action.payload, quantity: 1 });
+                state.cart.push({ itemId: action.payload, quantity: 1 });
             } else {
                 itemExists.quantity++
                 // console.log(action.payload.id);
             }
         },
         incrementQuantity: (state, action) => {
-            const item = state.cart.find((item) => item.id === action.payload);
+            const item = state.cart.find((item) => item.itemId === action.payload);
             item.quantity++;
         },
         decrementQuantity: (state, action) => {
-            const item = state.cart.find((item) => item.id === action.payload);
+            const item = state.cart.find((item) => item.itemId === action.payload);
             if (item.quantity === 1) {
-                const index = state.cart.findIndex((item) => item.id === action.payload);
+                const index = state.cart.findIndex((item) => item.itemId === action.payload);
                 state.cart.splice(index, 1);
             } else {
                 item.quantity--;

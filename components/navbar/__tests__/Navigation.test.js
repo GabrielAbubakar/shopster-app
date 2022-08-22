@@ -8,36 +8,29 @@ import { PersistGate } from 'redux-persist/integration/react';
 const persistor = persistStore(store);
 const mockChangeCat = jest.fn()
 
+const MockNavbar = () => {
+    return (
+        <Provider store={store}>
+            <PersistGate persistor={persistor}>
+                <Navbar />
+            </PersistGate>
+        </Provider>
+    )
+}
+
 
 
 describe("Run tests for the Navbar", () => {
     // test 1
-    test("Should render Navbar component", async () => {
+    test("Should render Navbar component and tab items", async () => {
         render(
-            <Provider store={store}>
-                <PersistGate persistor={persistor}>
-                    <Navbar />
-                </PersistGate>
-            </Provider>
+            <MockNavbar />
         )
 
         const element = screen.getByRole('navigation')
+        const navItems = screen.getAllByRole('listitem')
+        expect(navItems.length).toBe(3)
         expect(element).toBeInTheDocument()
     })
 
-    // test 2
-    test("Should change category state", async () => {
-        render(
-            <Provider store={store}>
-                <PersistGate persistor={persistor}>
-                    <Navbar />
-                </PersistGate>
-            </Provider>
-        )
-
-        // const element = screen.getByText(/All/i)
-        const element = screen.getByText(/All/i)
-        // fireEvent.click(element)
-        expect(element).toBeInTheDocument()
-    })
 })

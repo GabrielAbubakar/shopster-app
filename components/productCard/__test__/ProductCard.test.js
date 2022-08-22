@@ -10,7 +10,7 @@ const persistor = persistStore(store);
 
 
 // Mocking the provider of the redux store
-const MockProduct = () => {
+const MockProduct = (item) => {
     return (
         <Provider store={store}>
             <PersistGate persistor={persistor}>
@@ -25,13 +25,12 @@ describe("Unit tests for the Card Component", () => {
     // test 1
     test("Should render the component completely", async () => {
         render(
-            <MockProduct />
+            <MockProduct {...item} />
         )
 
         const imgElement = screen.getByRole('img')
         const nameElement = screen.getByRole('heading', { name: /Airtag/i })
         const cartImg = screen.getByAltText(/cart/i)
-
         expect(imgElement).toBeInTheDocument()
         expect(nameElement).toBeInTheDocument()
         expect(cartImg).toBeInTheDocument()
@@ -40,7 +39,10 @@ describe("Unit tests for the Card Component", () => {
     // test 2
     test("Should render out the props the component recieved", async () => {
         render(
-
+            <MockProduct {...item} />
         )
+
+        const nameElement = screen.getByRole('heading')
+        expect(nameElement.textContent).toBe(item.name)
     })
 })

@@ -56,11 +56,11 @@ const ProductCard = (item) => {
             </Link>
             {
                 inStock ? (
-                    <button title={`Add ${name} to cart`} onClick={() => dispatch(addToCart(item))}>
+                    <button label="addToCart" title={`Add ${name} to cart`} onClick={() => dispatch(addToCart(item))}>
                         <Image src={Cartsvg} alt="cart" />
                     </button>
                 ) : (
-                    <button disabled title={`Sorry, ${name} is unavailable`} onClick={() => dispatch(addToCart(item))}>
+                    <button label="addToCart" disabled title={`Sorry, ${name} is unavailable`} onClick={() => dispatch(addToCart(item))}>
                         <Image src={Cartsvg} alt="cart" />
                     </button>
                 )

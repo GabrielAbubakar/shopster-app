@@ -4,47 +4,43 @@ import { Provider } from 'react-redux'
 import { persistStore } from 'redux-persist';
 import { PersistGate } from 'redux-persist/integration/react';
 import ProductCard from '../index'
+import { item } from '../../../test-server/mock-data';
 
 const persistor = persistStore(store);
 
-// const item = {
-//     name: "AirTag",
-//     id: "apple-airtag",
-//     inStock: true,
-//     description: " <h1>Lose your knack for losing things.</h1> <p>AirTag is an easy way to keep track of your stuff. Attach one to your keys, slip another one in your backpack. And just like that, they’re on your radar in the Find My app. AirTag has your back.</p> ",
-//     category: "tech",
-//     brand: "Apple",
-//     attributes: [],
-//     quantity: 1
-// }
 
-
-
-
+// Mocking the provider of the redux store
 const MockProduct = () => {
     return (
         <Provider store={store}>
             <PersistGate persistor={persistor}>
-                <ProductCard />
+                <ProductCard {...item} />
             </PersistGate>
         </Provider>
     )
 }
 
 
-
-
-
-describe("Run tests for the Navbar", () => {
+describe("Unit tests for the Card Component", () => {
     // test 1
-    test("Should render Navbar component", async () => {
+    test("Should render the component completely", async () => {
         render(
-            // <MockProduct />
+            <MockProduct />
         )
 
-        // const element = screen.ByRole('header')
-        // expect(element).toBeInTheDocument()
+        const imgElement = screen.getByRole('img')
+        const nameElement = screen.getByRole('heading', { name: /Airtag/i })
+        const cartImg = screen.getByAltText(/cart/i)
+
+        expect(imgElement).toBeInTheDocument()
+        expect(nameElement).toBeInTheDocument()
+        expect(cartImg).toBeInTheDocument()
     })
 
+    // test 2
+    test("Should render out the props the component recieved", async () => {
+        render(
 
+        )
+    })
 })

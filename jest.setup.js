@@ -1,14 +1,27 @@
 import '@testing-library/jest-dom/extend-expect'
 
+// beforeEach(() => {
+//     const mockIntersectionObserver = jest.fn()
+//     mockIntersectionObserver.mockReturnValue({
+//         observer: () => null,
+//         unobserver: () => null,
+//         disconnect: () => null,
+//     });
+//     window.IntersectionObserver = mockIntersectionObserver
+// })
 
-// // test/setup-env.js
-// // add this to your setupFilesAfterEnv config in jest so it's imported for every test file
-// import { server } from './server.js'
+// import { server } from './test-server/server'
 
-// beforeAll(() => server.listen())
-// // if you need to add a handler after calling setupServer for some specific test
-// // this will remove that handler for the rest of them
-// // (which is important for test isolation):
-// afterEach(() => server.resetHandlers())
+// // Establish API mocking before all tests.
+// beforeAll(() => {
+//     server.listen()
+// })
+
+// // Reset any request handlers that we may add during the tests,
+// // so they don't affect other tests.
+// afterEach(() => {
+//     server.resetHandlers()
+// })
+
+// // Clean up after the tests are finished.
 // afterAll(() => server.close())
-

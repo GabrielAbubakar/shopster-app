@@ -26,7 +26,6 @@ const Navbar = () => {
         })
 
         setCurrencies(res.data.currencies)
-        // console.log(res.data.currencies)
     }
 
     useEffect(() => {

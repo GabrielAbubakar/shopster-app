@@ -53,10 +53,6 @@ const Home = ({ productsData }) => {
                 <link rel="icon" href="🛒" />
                 {/* <link rel="icon" href="😁" /> */}
             </Head>
-            {/* <p className="mobile-view">
-                Due to some constraints in design, this application is not available to view on mobile.
-                Please switch to a desktop view
-            </p> */}
             <Navbar />
             <Content>
                 <h1>{currentCategory} Products</h1>

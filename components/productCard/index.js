@@ -26,7 +26,9 @@ const ProductCard = (item) => {
         <Container
             title='Click to view product details'
             initial="hidden"
-            whileInView="visible"
+            animate="visible"
+            // disabling intersection observer for testing purposes
+            // whileInView="visible"
             viewport={{ once: true }}
             variants={itemVariant}
             style={{ filter: !inStock && 'grayscale(100)' }}>

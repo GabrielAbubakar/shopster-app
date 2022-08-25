@@ -1,15 +1,5 @@
 import '@testing-library/jest-dom/extend-expect'
 
-// beforeEach(() => {
-//     const mockIntersectionObserver = jest.fn()
-//     mockIntersectionObserver.mockReturnValue({
-//         observer: () => null,
-//         unobserver: () => null,
-//         disconnect: () => null,
-//     });
-//     window.IntersectionObserver = mockIntersectionObserver
-// })
-
 import { server } from './test-server/server'
 
 // Establish API mocking before all tests.

@@ -6,7 +6,7 @@ import { graphql } from 'msw' // msw supports graphql too!
 const api = graphql.link("http://localhost:4000/")
 
 const handlers = [
-    graphql.operation((req, res, ctx) => {
+    api.operation((req, res, ctx) => {
         return res(
             ctx.data({
                 data: {
@@ -671,7 +671,7 @@ const handlers = [
             })
         )
     }),
-    graphql.query("getCurrency", (req, res, ctx) => {
+    api.query("getCurrency", (req, res, ctx) => {
         return res(
             ctx.data({
                 data: {

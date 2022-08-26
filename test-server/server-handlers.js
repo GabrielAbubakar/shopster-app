@@ -4,7 +4,11 @@
 import { graphql } from 'msw' // msw supports graphql too!
 import category from './mock-data'
 
-const api = graphql.link("http://localhost:4000/")
+// development api
+// const api = graphql.link("http://localhost:4000/") 
+
+// production api
+const api = graphql.link("https://scandiwebserve.herokuapp.com/")
 
 const handlers = [
     api.query("getAllProducts", (req, res, ctx) => {

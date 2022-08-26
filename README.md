@@ -1,6 +1,6 @@
 # Shopster-ecommerce
 
-![Shopster App](https://i.imgur.com/Xfvm4fA.png)
+![Shopster App](https://i.imgur.com/)
 
 ## Overview:
 
@@ -29,7 +29,7 @@
 ## Running Locally
 
 ```bash
-$ git clone https://github.com/andrewdoro/vestis-ecommerce.git
+$ git clone https://github.com/GabrielAbubakar/shopster-app.git
 $ cd shopster app
 $ npm install
 $ npm run dev

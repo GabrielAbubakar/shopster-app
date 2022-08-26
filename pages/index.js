@@ -28,6 +28,8 @@ const Home = ({ productsData }) => {
     const { currentCategory } = useSelector((state => state.persistedReducer.cart))
     const [products, setProducts] = useState(productsData)
 
+
+
     const fetchCategory = async (cat) => {
         const res = await client.query({
             query: getProductsByCategory,

@@ -19,6 +19,11 @@ const MockedHome = () => {
 
 
 describe("Tests for home page", () => {
+
+    // beforeAll(async () => {
+    //     await
+    // })
+
     it("Should display the pages header", () => {
         render(
             <MockedHome />
@@ -35,6 +40,6 @@ describe("Tests for home page", () => {
         )
 
         const productCard = await screen.findAllByTitle(/product details/i)
-        expect(productCard.length).toBe(8)
+        expect(productCard.length).toBe(3)
     })
 })

@@ -26,7 +26,9 @@ const ProductCard = (item) => {
         <Container
             title='Click to view product details'
             initial="hidden"
-            whileInView="visible"
+            animate="visible"
+            // disabling intersection observer for testing purposes
+            // whileInView="visible"
             viewport={{ once: true }}
             variants={itemVariant}
             style={{ filter: !inStock && 'grayscale(100)' }}>
@@ -56,11 +58,11 @@ const ProductCard = (item) => {
             </Link>
             {
                 inStock ? (
-                    <button title={`Add ${name} to cart`} onClick={() => dispatch(addToCart(item))}>
+                    <button label="addToCart" title={`Add ${name} to cart`} onClick={() => dispatch(addToCart(item))}>
                         <Image src={Cartsvg} alt="cart" />
                     </button>
                 ) : (
-                    <button disabled title={`Sorry, ${name} is unavailable`} onClick={() => dispatch(addToCart(item))}>
+                    <button label="addToCart" disabled title={`Sorry, ${name} is unavailable`} onClick={() => dispatch(addToCart(item))}>
                         <Image src={Cartsvg} alt="cart" />
                     </button>
                 )

@@ -113,6 +113,7 @@ const CartPage = () => {
                             {
                                 cart.map((item, index) => (
                                     <Item key={index}
+                                        title="cartItem"
                                         initial="hidden"
                                         whileInView="visible"
                                         exit="exit"

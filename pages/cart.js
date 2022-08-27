@@ -49,7 +49,7 @@ const CartPage = () => {
 
     useEffect(() => {
         //Calculate the total price to be paid based on currently active currency / Happens on cart and currentCurrency state change
-        const total = 0
+        let total = 0
         const priceArr = []
         cart.map((item, i) => {
             priceArr.push(item.prices.find((item) => item.currency.label === currentCurrency))
@@ -60,8 +60,8 @@ const CartPage = () => {
 
     useEffect(() => {
         //Calculate the total quantities on cart state change
-        const sum = 0;
-        const group = 0;
+        let sum = 0;
+        let group = 0;
         cart.map(item => {
             sum += item.quantity
             group++

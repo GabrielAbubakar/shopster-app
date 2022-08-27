@@ -38,7 +38,7 @@ const Navbar = () => {
 
 
     useEffect(() => {
-        const sum = 0;
+        let sum = 0;
         cart.map(item => {
             sum += item.quantity
         })

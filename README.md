@@ -1,6 +1,6 @@
 # Shopster-ecommerce
 
-![Shopster App](https://i.imgur.com/)
+![Shopster App](/public/readme-img/shopster1.png)
 
 ## Overview:
 
@@ -10,55 +10,16 @@
 - The final cart page dispatches actions to the state to update number of items in the cart and their quantities
 - The different pages of the application use Server Side Rendering, for the home page, Static Site Genration for the product pages and Client side fetching for the cart checkout.
 
-## Stack
+For detailed stack details and requirements for local deployment of the application check the [Wiki](https://github.com/GabrielAbubakar/shopster-app/wiki)
 
-- **Framework**: [Next.js](https://reactjs.org/)
-- **State Management**: [Redux Toolkit](https://redux-toolkit.js.org/)
-- **Styling**: [Styled Components](https://mui.com/)
-- **Animations**: [Framer Motion](https://www.framer.com/)
-- **Testing**: 
-    - [React Testing Library](https://testing-library.com/)
-    - [Jest](https://jestjs.io/)
-- **Deployment**: [Vercel](https://www.vercel.com/)
-- **API**: 
-    - [GraphQL](https://graphql.org/)
-    - [Apollo Client](https://www.apollographql.com/)
-    - [API Route](https://scandiwebserve.herokuapp.com/)
+Here is the proferred user flow alongside image previews for ease
 
+### Landing Page
+![home image](/public/readme-img/shopster1.png)
 
-## Running Locally
+### Single Product Page
+![home image](/public/readme-img/shopster2.png)
 
-```bash
-$ git clone https://github.com/GabrielAbubakar/shopster-app.git
-$ cd shopster app
-$ npm install
-$ npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-
-## Styling
-
-Styling for the application is powered by the styled components library and is written in javascript files in the /components/styled directory. Files containing styles for the application are prefixed with '.styled.js' for easier recognition. The configuration for writing media queries is contained in 'mediaqueries.js' which are exported and then imported to the relavant style files for responsive design.
-
-
-## New Learnings
-
-There were various new tools I learned in the development of this application and are listed such:
-- Deeper understanding of the SSG, SSR and ISG concepts and capabilities of the Nextjs framework. 
-- Utilizing Redux and Redux for complex and immutable state management in applications.
-- The protocols for the consumption of GraphQL APIs
-
-
-## Testing
-
-Testing was setup for this project using the structure found at [this article:](https://blog.jarrodwatts.com/how-to-set-up-nextjs-with-jest-react-testing-library-and-playwright)
-
-
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
+### Cart Page
+![home image](/public/readme-img/shopster2.png)
 

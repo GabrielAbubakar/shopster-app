@@ -1,4 +1,4 @@
-# Shopster-ecommerce
+# Shopster Ecommerce
 
 ![Shopster App](/public/readme-img/shopster1.png)
 

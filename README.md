@@ -2,7 +2,7 @@
 
 ![Shopster App](/public/readme-img/shopster1.png)
 
-## Overview:
+## Overview: 
 
 - Shopster is an eCommerce app using redux for state management
 - Products can be filtered using the navigation according to categories
